@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti - Gaming Relax</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-text">Gaming Relax</span>
+        </div>
+        <div class="nav-icons">
+            <a href="https://discord.com" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
+            <a href="carrello.html" class="icon-link cart-icon"><i class="fa-solid fa-cart-shopping"></i></a>
+            <button class="menu-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <nav class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="store.html">Store</a>
+        <a href="art.html">Art & Design</a>
+        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+    </nav>
+
+    <main class="main-content">
+        <div class="about-container" style="text-align: center;">
+            <h1 class="page-title">Contatta Gaming Relax</h1>
+            <p class="about-text" style="margin-bottom: 20px;">Siamo qui per te. Unisciti alla nostra community o apri un ticket per assistenza.</p>
+            <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.8rem; margin-top: 20px;">
+                <a href="https://discord.com" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
+                <a href="mailto:info@gamingrelaxofficials.it" class="icon-link"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://instagram.com" target="_blank" class="icon-link"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('active'));
+    </script>
+</body>
+</html>
