@@ -3,69 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Relax - Tastiere Custom</title>
+    <title>Gaming Relax - Home</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Google per un look moderno -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome per le icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header / Navigazione -->
     <header class="site-header">
         <div class="logo-container">
-            <img src="logo.png" alt="Gaming Relax Logo" class="logo-img">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
             <span class="logo-text">Gaming Relax</span>
         </div>
         <div class="nav-icons">
-            <a href="https://discord.com" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
-            <a href="carrello.html" class="icon-link cart-icon"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="https://discord.com" target="_blank" class="icon-link" title="Discord Community"><i class="fa-brands fa-discord"></i></a>
+            <a href="carrello.html" class="icon-link cart-icon" title="Carrello"><i class="fa-solid fa-cart-shopping"></i></a>
             <button class="menu-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>
 
-    <!-- Menu a tendina mobile -->
     <nav class="dropdown-menu" id="dropdownMenu">
         <a href="index.html">Home</a>
-        <a href="store.html">Store</a>
+        <a href="work.html">Work</a>
+        <a href="custom.html">Custom</a>
         <a href="art.html">Art & Design</a>
-        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="about.html">Chi Siamo</a>
         <a href="contatti.html">Contatti</a>
     </nav>
 
-    <!-- Sezione Principale / Prodotto in Evidenza -->
     <main class="main-content">
-        <div class="product-card">
-            <div class="product-banner">
-                <!-- Sostituisci l'immagine con la tua o usa un link diretto -->
-                <div class="banner-text-overlay">SOGNATORE</div>
-            </div>
-            <div class="product-info">
-                <span class="product-category">MINIMALIST GOWNS</span>
-                <div class="product-title-row">
-                    <h2>Gaming Relax</h2>
-                    <div class="wishlist-icons">
-                        <i class="fa-regular fa-heart"></i>
-                        <i class="fa-solid fa-heart active-heart"></i>
+        <section class="hero-section">
+            <h1 class="hero-title">Estetica e Potenza per il tuo <span>Gaming</span></h1>
+            <p class="section-text" style="max-width: 600px; margin: 0 auto;">Periferiche custom, design spaziale e soluzioni software avanzate create su misura per la tua postazione.</p>
+        </section>
+
+        <div class="products-grid">
+            <!-- Prodotto 1 -->
+            <div class="product-card">
+                <div class="product-banner">
+                    <button class="wishlist-btn"><i class="fa-solid fa-heart"></i></button>
+                    <div class="banner-text-overlay">SOGNATORE</div>
+                </div>
+                <div class="product-info">
+                    <span class="product-category">MINIMALIST GOWNS</span>
+                    <h2 class="product-name">Gaming Relax</h2>
+                    <div class="product-footer">
+                        <span class="price">1.00 €</span>
+                        <a href="carrello.html" class="btn-buy">Acquista</a>
                     </div>
                 </div>
-                <div class="product-footer">
-                    <span class="price">1.00 €</span>
-                    <a href="carrello.html" class="btn-buy">Acquista</a>
+            </div>
+            <!-- Prodotto 2 -->
+            <div class="product-card">
+                <div class="product-banner" style="background: linear-gradient(135deg, #1f4037, #99f2c8);">
+                    <button class="wishlist-btn"><i class="fa-solid fa-heart"></i></button>
+                    <div class="banner-text-overlay" style="color: #000;">GALAXY</div>
+                </div>
+                <div class="product-info">
+                    <span class="product-category">MINIMALIST GOWNS</span>
+                    <h2 class="product-name">Galaxy Edition</h2>
+                    <div class="product-footer">
+                        <span class="price">54.90 €</span>
+                        <a href="carrello.html" class="btn-buy">Acquista</a>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Script per gestire il menu -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const dropdownMenu = document.getElementById('dropdownMenu');
-
-        menuToggle.addEventListener('click', () => {
-            dropdownMenu.classList.toggle('active');
-        });
+        menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('active'));
     </script>
 </body>
 </html>
