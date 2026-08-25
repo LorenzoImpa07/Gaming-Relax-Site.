@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: #0b0b14;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(15, 15, 26, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-link {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.icon-link:hover {
+    color: #ccff00;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+/* Menu a tendina */
+.dropdown-menu {
+    position: absolute;
+    top: 65px;
+    right: 20px;
+    background-color: #161625;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    padding: 12px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(204, 255, 0, 0.1);
+    color: #ccff00;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #131320;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.product-banner {
+    height: 220px;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.banner-text-overlay {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ccff00;
+    text-shadow: 0 0 15px rgba(204, 255, 0, 0.6);
+    letter-spacing: 2px;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-category {
+    font-size: 0.8rem;
+    color: #b19cd9;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.product-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.product-title-row h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.wishlist-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+.wishlist-icons .fa-regular {
+    color: #aaa;
+}
+
+.active-heart {
+    color: #b19cd9;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.btn-buy {
+    background-color: #ccff00;
+    color: #000000;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-buy:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+}
