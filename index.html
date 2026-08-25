@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Relax - Tastiere Custom</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Google per un look moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navigazione -->
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="logo.png" alt="Gaming Relax Logo" class="logo-img">
+            <span class="logo-text">Gaming Relax</span>
+        </div>
+        <div class="nav-icons">
+            <a href="https://discord.com" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
+            <a href="carrello.html" class="icon-link cart-icon"><i class="fa-solid fa-cart-shopping"></i></a>
+            <button class="menu-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Menu a tendina mobile -->
+    <nav class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="store.html">Store</a>
+        <a href="art.html">Art & Design</a>
+        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+    </nav>
+
+    <!-- Sezione Principale / Prodotto in Evidenza -->
+    <main class="main-content">
+        <div class="product-card">
+            <div class="product-banner">
+                <!-- Sostituisci l'immagine con la tua o usa un link diretto -->
+                <div class="banner-text-overlay">SOGNATORE</div>
+            </div>
+            <div class="product-info">
+                <span class="product-category">MINIMALIST GOWNS</span>
+                <div class="product-title-row">
+                    <h2>Gaming Relax</h2>
+                    <div class="wishlist-icons">
+                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-solid fa-heart active-heart"></i>
+                    </div>
+                </div>
+                <div class="product-footer">
+                    <span class="price">1.00 €</span>
+                    <a href="carrello.html" class="btn-buy">Acquista</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script per gestire il menu -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuToggle.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
