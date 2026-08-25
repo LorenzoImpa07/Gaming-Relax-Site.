@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello - Gaming Relax</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-text">Gaming Relax</span>
+        </div>
+        <div class="nav-icons">
+            <a href="https://discord.com" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
+            <a href="carrello.html" class="icon-link cart-icon"><i class="fa-solid fa-cart-shopping"></i></a>
+            <button class="menu-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <nav class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Home</a>
+        <a href="store.html">Store</a>
+        <a href="art.html">Art & Design</a>
+        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+    </nav>
+
+    <main class="main-content">
+        <div class="cart-box">
+            <h2 class="cart-title">Riepilogo Carrello</h2>
+            <div class="cart-item">
+                <span>1x Gaming Relax (Minimalist Gowns)</span>
+                <span>1.00 €</span>
+            </div>
+            <div class="cart-total">
+                <span>Totale:</span>
+                <span class="total-price">1.00 €</span>
+            </div>
+            <button class="btn-buy" style="width: 100%; margin-top: 20px; text-align: center; border: none; cursor: pointer;">Procedi al Checkout</button>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('active'));
+    </script>
+</body>
+</html>
