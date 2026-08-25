@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrello - Gaming Relax</title>
+    <title>Carrello & Checkout - Gaming Relax</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,24 +24,58 @@
 
     <nav class="dropdown-menu" id="dropdownMenu">
         <a href="index.html">Home</a>
-        <a href="store.html">Store</a>
+        <a href="work.html">Work</a>
+        <a href="custom.html">Custom</a>
         <a href="art.html">Art & Design</a>
-        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="about.html">Chi Siamo</a>
         <a href="contatti.html">Contatti</a>
     </nav>
 
     <main class="main-content">
-        <div class="cart-box">
-            <h2 class="cart-title">Riepilogo Carrello</h2>
-            <div class="cart-item">
-                <span>1x Gaming Relax (Minimalist Gowns)</span>
-                <span>1.00 €</span>
+        <div class="checkout-container">
+            <h1 class="page-title" style="margin-bottom: 10px; text-align: left;">Carrello & Checkout</h1>
+
+            <!-- Box Coupon -->
+            <div class="content-box" style="max-width: 100%; padding: 20px;">
+                <div class="coupon-box">
+                    <input type="text" class="coupon-input" placeholder="Codice coupon">
+                    <button class="coupon-btn">Applica</button>
+                </div>
             </div>
-            <div class="cart-total">
-                <span>Totale:</span>
-                <span class="total-price">1.00 €</span>
+
+            <!-- Area Informativa Spedizioni -->
+            <div class="shipping-info">
+                «Gli ordini hardware vengono preparati con cura e imballati in modo sicuro con tracciamento della spedizione. Per servizi software e bot, sarai contattato dal nostro team tech.»
             </div>
-            <button class="btn-buy" style="width: 100%; margin-top: 20px; text-align: center; border: none; cursor: pointer;">Procedi al Checkout</button>
+
+            <!-- Riepilogo Costi -->
+            <div class="content-box" style="max-width: 100%; padding: 20px;">
+                <div class="cost-summary">
+                    <div class="cost-row">
+                        <span>Subtotale stimato:</span>
+                        <span>0.00 €</span>
+                    </div>
+                    <div class="cost-row total">
+                        <span>Totale:</span>
+                        <span>0.00 €</span>
+                    </div>
+                </div>
+                <p class="tax-note" style="margin-top: 15px;">Tasse e spedizione sono calcolate durante il checkout sicuro ove applicabili.</p>
+            </div>
+
+            <!-- Metodi di Pagamento Esterni -->
+            <h3 style="font-size: 1.1rem; margin-top: 10px; color: #fff;">Scegli il metodo di pagamento:</h3>
+            <div class="payments-grid">
+                <a href="https://revolut.me" target="_blank" class="payment-btn"><i class="fa-solid fa-r"></i> Revolut</a>
+                <a href="https://paypal.com" target="_blank" class="payment-btn"><i class="fa-brands fa-paypal"></i> PayPal</a>
+                <a href="#" class="payment-btn"><i class="fa-solid fa-credit-card"></i> Mastercard / Carte</a>
+                <a href="#" class="payment-btn"><i class="fa-solid fa-building-columns"></i> Unicredit (Bonifico)</a>
+            </div>
+
+            <!-- Pulsante Checkout & Flusso Discord -->
+            <a href="https://discord.com" target="_blank" class="btn-buy" style="display: block; text-align: center; padding: 15px; font-size: 1.1rem; margin-top: 10px;">
+                Procedi al Checkout (Verifica su Discord)
+            </a>
         </div>
     </main>
 
