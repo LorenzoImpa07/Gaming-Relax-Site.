@@ -62,10 +62,16 @@ Il progetto Firebase `gaming-relax` è già collegato in `js/firebase-config.js`
 5. Salva: dopo qualche minuto il sito sarà online su `https://<tuo-utente>.github.io/gaming-relax/`.
 6. Non dimenticare il punto 3 sopra (autorizzare il dominio in Firebase), altrimenti login e registrazione daranno errore online.
 
+## Pagamenti (link Stripe per prodotto)
+
+Non c'è un carrello multi-prodotto: ogni prodotto può avere un **link di pagamento Stripe** (creato gratis, senza scrivere codice, dal pannello Stripe → Payment Links). Se un prodotto ha questo link compilato nella Dashboard, nello Store il bottone diventa "Acquista" e porta dritto alla pagina di pagamento sicura di Stripe (carte Visa/Mastercard, PayPal e Revolut Pay, se li attivi nelle impostazioni Stripe). Se il campo è vuoto, resta il bottone "Richiedi" che porta al form Contatti — utile per servizi su preventivo o prodotti ancora da configurare.
+
+Passaggi: crea un account su [stripe.com](https://stripe.com), attiva i metodi di pagamento che vuoi in Impostazioni → Payment methods, crea un link di pagamento per prodotto da Payment Links, e incolla l'URL nel campo "Link di pagamento Stripe" di quel prodotto nella Dashboard.
+
 ## Cosa completare prima di andare online
 
 - **Immagini reali**: logo, foto team, foto prodotti, galleria Art. Nella Dashboard i campi "URL immagine" accettano un link diretto a un'immagine (puoi caricarla su un servizio come Imgur, o su un tuo hosting, e incollare qui il link).
-- **Pagamenti reali nello Store**: al momento il bottone dei prodotti porta al form Contatti. Per vendite dirette serve collegare un provider come Stripe o PayPal Checkout.
+- **Pagamenti reali nello Store**: vedi la sezione dedicata sopra ("Pagamenti (link Stripe per prodotto)").
 - **Form contatti** (`contatti.html`): al momento mostra solo un messaggio di conferma, senza inviare nulla. Collegalo a [Formspree](https://formspree.io) o [EmailJS](https://www.emailjs.com), oppure a un tuo backend.
 - **Link social**: sostituisci i link `#` di Discord, YouTube, Instagram, TikTok con quelli reali.
 - **Testi legali**: Privacy Policy e Termini sono indicativi — fatti revisionare da un professionista prima della pubblicazione (nota anche che ora il sito raccoglie account utente: la Privacy Policy andrebbe aggiornata per menzionarlo esplicitamente).
