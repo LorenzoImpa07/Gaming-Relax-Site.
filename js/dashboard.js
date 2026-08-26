@@ -34,7 +34,8 @@ onAuthStateChanged(auth, (user) => {
   initTabs();
   initProducts();
   initTeam();
-  initHomeContent();
+  initPageContent();
+  initDesign();
 });
 
 document.getElementById("logout-dash")?.addEventListener("click", () => {
@@ -227,35 +228,138 @@ function initTeam() {
 }
 
 // ==========================================================================
-// CONTENUTI HOME — titolo hero, sottotitolo, testo pulsante
+// TESTI DELLE PAGINE — un form dinamico per pagina, generato da PAGE_FIELDS
 // ==========================================================================
-function initHomeContent() {
-  const form = document.getElementById("home-content-form");
-  const statusMsg = document.getElementById("home-content-status");
-  const ref = doc(db, "siteContent", "home");
+const PAGE_FIELDS = {
+  home: [
+    { key: "heroTitleLine1", label: "Titolo hero — riga 1", type: "input", placeholder: "La tua tastiera." },
+    { key: "heroTitleLine2", label: "Titolo hero — riga 2", type: "input", placeholder: "Il tuo pezzo" },
+    { key: "heroAccent", label: "Titolo hero — parola evidenziata", type: "input", placeholder: "unico." },
+    { key: "heroSubtitle", label: "Sottotitolo hero", type: "textarea", placeholder: "Grafiche custom per tastiere e arte su misura..." },
+    { key: "heroCta", label: "Testo pulsante hero", type: "input", placeholder: "Esplora il nostro mondo →" },
+    { key: "studioTitle", label: "Titolo sezione \"Un team. Uno studio.\"", type: "textarea", placeholder: "Un team.\nUno studio." },
+    { key: "studioText", label: "Testo sezione \"Un team. Uno studio.\"", type: "textarea" },
+    { key: "ctaTitle", label: "Titolo banner finale (\"Hai un'idea?\")", type: "textarea", placeholder: "Hai un'idea?\nTrasformiamola in qualcosa di unico." }
+  ],
+  store: [
+    { key: "eyebrow", label: "Etichetta sopra il titolo", type: "input", placeholder: "Esplora lo Store" },
+    { key: "title", label: "Titolo", type: "textarea", placeholder: "Hardware & Accessori" },
+    { key: "subtitle", label: "Sottotitolo", type: "textarea" }
+  ],
+  custom: [
+    { key: "eyebrow", label: "Etichetta sopra il titolo", type: "input", placeholder: "Il processo" },
+    { key: "title", label: "Titolo", type: "textarea", placeholder: "Tu la immagini,\nnoi la costruiamo" },
+    { key: "subtitle", label: "Sottotitolo", type: "textarea" }
+  ],
+  art: [
+    { key: "title", label: "Titolo", type: "textarea", placeholder: "L'arte non ha limiti" },
+    { key: "subtitle", label: "Sottotitolo", type: "textarea" }
+  ],
+  team: [
+    { key: "title", label: "Titolo", type: "textarea", placeholder: "Il nostro team" },
+    { key: "subtitle", label: "Sottotitolo", type: "textarea" }
+  ],
+  contatti: [
+    { key: "eyebrow", label: "Etichetta sopra il titolo", type: "input", placeholder: "Progetti" },
+    { key: "title", label: "Titolo", type: "textarea", placeholder: "Iniziamo a\ncostruire" },
+    { key: "subtitle", label: "Sottotitolo", type: "textarea" }
+  ]
+};
+
+function initPageContent() {
+  const pageSelect = document.getElementById("page-select");
+  const fieldsContainer = document.getElementById("page-content-fields");
+  const form = document.getElementById("page-content-form");
+  const statusMsg = document.getElementById("page-content-status");
+
+  function renderFieldsFor(pageKey) {
+    const fields = PAGE_FIELDS[pageKey] || [];
+    fieldsContainer.innerHTML = fields.map((f) => `
+      <div class="field">
+        <label for="pf-${f.key}">${f.label}</label>
+        ${f.type === "textarea"
+          ? `<textarea id="pf-${f.key}" placeholder="${f.placeholder || ""}"></textarea>`
+          : `<input type="text" id="pf-${f.key}" placeholder="${f.placeholder || ""}">`
+        }
+      </div>
+    `).join("");
+
+    getDoc(doc(db, "siteContent", pageKey)).then((snap) => {
+      if (!snap.exists()) return;
+      const d = snap.data();
+      fields.forEach((f) => {
+        const el = document.getElementById(`pf-${f.key}`);
+        if (el && d[f.key]) el.value = d[f.key];
+      });
+    });
+  }
+
+  pageSelect.addEventListener("change", () => renderFieldsFor(pageSelect.value));
+  renderFieldsFor(pageSelect.value);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const pageKey = pageSelect.value;
+    const fields = PAGE_FIELDS[pageKey] || [];
+    const data = {};
+    fields.forEach((f) => {
+      data[f.key] = document.getElementById(`pf-${f.key}`).value.trim();
+    });
+    await setDoc(doc(db, "siteContent", pageKey), data, { merge: true });
+
+    statusMsg.textContent = "Salvato. Ricarica quella pagina del sito per vedere le modifiche.";
+    statusMsg.classList.add("visible");
+    setTimeout(() => statusMsg.classList.remove("visible"), 4000);
+  });
+}
+
+// ==========================================================================
+// ASPETTO GRAFICO — colori globali del sito
+// ==========================================================================
+const DEFAULT_COLORS = {
+  limeColor: "#c6ff1a",
+  purpleColor: "#9b3dff",
+  bgColor: "#0a0d16",
+  bgAltColor: "#10141f",
+  cardColor: "#14182a"
+};
+
+function initDesign() {
+  const form = document.getElementById("design-form");
+  const statusMsg = document.getElementById("design-status");
+  const resetBtn = document.getElementById("design-reset");
+  const ref = doc(db, "siteContent", "design");
+
+  const inputs = {
+    limeColor: document.getElementById("d-lime"),
+    purpleColor: document.getElementById("d-purple"),
+    bgColor: document.getElementById("d-bg"),
+    bgAltColor: document.getElementById("d-bg-alt"),
+    cardColor: document.getElementById("d-card")
+  };
 
   getDoc(ref).then((snap) => {
-    if (snap.exists()) {
-      const d = snap.data();
-      form.querySelector("#hc-title1").value = d.heroTitleLine1 || "";
-      form.querySelector("#hc-title2").value = d.heroTitleLine2 || "";
-      form.querySelector("#hc-accent").value = d.heroAccent || "";
-      form.querySelector("#hc-subtitle").value = d.heroSubtitle || "";
-      form.querySelector("#hc-cta").value = d.heroCta || "";
-    }
+    if (!snap.exists()) return;
+    const d = snap.data();
+    Object.entries(inputs).forEach(([key, el]) => { if (d[key]) el.value = d[key]; });
   });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    await setDoc(ref, {
-      heroTitleLine1: form.querySelector("#hc-title1").value.trim(),
-      heroTitleLine2: form.querySelector("#hc-title2").value.trim(),
-      heroAccent: form.querySelector("#hc-accent").value.trim(),
-      heroSubtitle: form.querySelector("#hc-subtitle").value.trim(),
-      heroCta: form.querySelector("#hc-cta").value.trim()
-    }, { merge: true });
+    const data = {};
+    Object.entries(inputs).forEach(([key, el]) => { data[key] = el.value; });
+    await setDoc(ref, data, { merge: true });
 
-    statusMsg.textContent = "Salvato. Ricarica la Home per vedere le modifiche.";
+    statusMsg.textContent = "Salvato. Ricarica una pagina qualsiasi del sito per vedere i nuovi colori.";
+    statusMsg.classList.add("visible");
+    setTimeout(() => statusMsg.classList.remove("visible"), 4000);
+  });
+
+  resetBtn.addEventListener("click", async () => {
+    if (!confirm("Ripristinare i colori predefiniti del sito?")) return;
+    Object.entries(inputs).forEach(([key, el]) => { el.value = DEFAULT_COLORS[key]; });
+    await setDoc(ref, DEFAULT_COLORS, { merge: true });
+    statusMsg.textContent = "Colori predefiniti ripristinati.";
     statusMsg.classList.add("visible");
     setTimeout(() => statusMsg.classList.remove("visible"), 4000);
   });
