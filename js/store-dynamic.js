@@ -40,7 +40,10 @@ function renderProducts(products) {
         ${p.description ? `<p style="font-size:14px;">${escapeHtml(p.description)}</p>` : ""}
         <div class="product-card__footer">
           <span class="product-card__price">${escapeHtml(p.price)}</span>
-          <a href="contatti.html" class="btn btn--lime" style="padding:10px 22px;font-size:14px;">Richiedi</a>
+          ${p.paymentLink
+            ? `<a href="${escapeHtml(p.paymentLink)}" target="_blank" rel="noopener" class="btn btn--lime" style="padding:10px 22px;font-size:14px;">Acquista</a>`
+            : `<a href="contatti.html" class="btn btn--lime" style="padding:10px 22px;font-size:14px;">Richiedi</a>`
+          }
         </div>
       </div>
     </div>
