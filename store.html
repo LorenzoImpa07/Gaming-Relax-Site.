@@ -1,79 +1,109 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store - Gaming Relax</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store — Gaming Relax</title>
+<meta name="description" content="Sfoglia tastiere custom, keycaps, switch e accessori per il tuo desk setup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
-            <span class="logo-text">Gaming Relax</span>
-        </div>
-        <div class="nav-icons">
-            <a href="https://discord.com" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
-            <a href="carrello.html" class="icon-link cart-icon"><i class="fa-solid fa-cart-shopping"></i></a>
-            <button class="menu-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
-        </div>
-    </header>
-
-    <nav class="dropdown-menu" id="dropdownMenu">
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand__logo">🎮</span>
+      Gaming Relax
+    </a>
+    <div class="header-actions">
+      <span id="auth-area"></span>
+      <button class="nav-toggle" aria-label="Apri il menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav">
         <a href="index.html">Home</a>
-        <a href="store.html">Store</a>
-        <a href="art.html">Art & Design</a>
-        <a href="chisiamo.html">Chi Siamo</a>
+        <a href="store.html" class="active">Store</a>
+        <a href="custom.html">Custom</a>
+        <a href="art.html">Art</a>
+        <a href="team.html">Team</a>
         <a href="contatti.html">Contatti</a>
-    </nav>
+      </nav>
+    </div>
+  </div>
+</header>
 
-    <main class="main-content">
-        <div class="store-container">
-            <h1 class="page-title">Il Nostro Store</h1>
-            <div class="products-grid">
-                <!-- Prodotto 1 -->
-                <div class="product-card">
-                    <div class="product-banner" style="background: linear-gradient(135deg, #1f4037, #99f2c8);">
-                        <div class="banner-text-overlay" style="color: #000;">GALAXY</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Tastiera Custom</span>
-                        <div class="product-title-row">
-                            <h2>Galaxy Edition</h2>
-                        </div>
-                        <div class="product-footer">
-                            <span class="price">54.90 €</span>
-                            <a href="carrello.html" class="btn-buy">Acquista</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Prodotto 2 -->
-                <div class="product-card">
-                    <div class="product-banner" style="background: linear-gradient(135deg, #2b5876, #4e4376);">
-                        <div class="banner-text-overlay">AETHER</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Tastiera Custom</span>
-                        <div class="product-title-row">
-                            <h2>Aether Pro</h2>
-                        </div>
-                        <div class="product-footer">
-                            <span class="price">87.00 €</span>
-                            <a href="carrello.html" class="btn-buy">Acquista</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+<section class="store-hero">
+  <div class="container">
+    <span class="eyebrow eyebrow--purple">Esplora lo Store</span>
+    <h1>Hardware &amp; Accessori</h1>
+    <p class="lede" style="margin:18px auto 0;">Sfoglia tastiere, keycaps, switch e accessori per il tuo desk setup. Seleziona le tue preferenze e aggiungi direttamente al carrello per un checkout rapido e sicuro.</p>
+  </div>
+</section>
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('active'));
-    </script>
+<section>
+  <div class="container">
+
+    <div class="filter-row">
+      <button class="filter-pill active" data-store-filter="tutti">Tutti</button>
+      <button class="filter-pill" data-store-filter="tastiere">Tastiere Custom</button>
+      <button class="filter-pill" data-store-filter="keycaps">Keycaps</button>
+      <button class="filter-pill" data-store-filter="accessori">Accessori</button>
+      <button class="filter-pill" data-store-filter="servizi">Servizi Tech</button>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+      <p style="text-align:center;grid-column:1/-1;color:var(--text-dim);">Caricamento prodotti…</p>
+    </div>
+
+    <p style="text-align:center;margin-top:40px;font-size:14px;">I prodotti sono gestiti dallo staff tramite la Dashboard e aggiornati automaticamente qui.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand__logo">🎮</span> Gaming Relax</div>
+        <p>Custom Keyboards &amp; Digital Craftsmanship.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Link utili</h4>
+        <a href="faq.html">FAQ (Domande Frequenti)</a>
+        <a href="termini.html">Termini e Condizioni</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Orari di supporto &amp; disponibilità</h4>
+        <p>Lun - Ven: 10:00 - 19:00</p>
+        <p>Sab - Dom: Su appuntamento</p>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <p>Unisciti al nostro server per news, setup e supporto diretto.</p>
+        <a class="social-link" href="#">Entra su Discord</a>
+        <a class="social-link" href="#">Seguici su YouTube</a>
+        <a class="social-link" href="#">Seguici su Instagram</a>
+        <a class="social-link" href="#">Seguici su TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small>© 2026 Gaming Relax. All rights reserved.</small>
+      <div class="socials">
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="TikTok">♪</a>
+        <a href="#" aria-label="Discord">◈</a>
+        <a href="#" aria-label="Email">✉</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script type="module" src="js/firebase-init.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/store-dynamic.js"></script>
 </body>
 </html>

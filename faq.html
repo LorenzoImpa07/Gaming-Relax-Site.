@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contatti — Gaming Relax</title>
-<meta name="description" content="Pronto a creare il tuo prossimo pezzo unico? Compila il form minimale e ti ricontatteremo.">
+<title>FAQ — Gaming Relax</title>
+<meta name="description" content="Domande frequenti su tempi di consegna, licenze bot Discord, supporto e modding delle tastiere custom.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -28,59 +28,58 @@
         <a href="custom.html">Custom</a>
         <a href="art.html">Art</a>
         <a href="team.html">Team</a>
-        <a href="contatti.html" class="active">Contatti</a>
+        <a href="contatti.html">Contatti</a>
       </nav>
     </div>
   </div>
 </header>
 
-<section class="contact-hero">
+<section class="faq-hero">
   <div class="container">
-    <span class="eyebrow eyebrow--lime">Progetti</span>
-    <h1>Iniziamo a<br>costruire</h1>
-    <p class="lede">Pronto a creare il tuo prossimo pezzo unico? Compila il form minimale e ti ricontatteremo.</p>
+    <h1>Domande frequenti</h1>
   </div>
 </section>
 
 <section style="padding-top:20px;">
   <div class="container">
-    <form class="contact-form-wrap" id="contact-form">
+    <div class="faq-list">
 
-      <div class="field">
-        <label for="alias">Nome / Alias</label>
-        <input type="text" id="alias" name="alias" required>
+      <div class="faq-item open">
+        <button class="faq-item__q">Quali sono i tempi di consegna per una tastiera custom?<span class="sign">−</span></button>
+        <div class="faq-item__a">
+          <p>I tempi variano in base alla complessità della build e alla disponibilità dei componenti. Generalmente, per un assemblaggio base impieghiamo dalle 2 alle 4 settimane.</p>
+        </div>
       </div>
 
-      <div class="field">
-        <label for="discord">Discord ID</label>
-        <input type="text" id="discord" name="discord" placeholder="es. utente#0000">
+      <div class="faq-item">
+        <button class="faq-item__q">Come funziona la licenza per i Bot Discord sviluppati da voi?<span class="sign">+</span></button>
+        <div class="faq-item__a">
+          <p>Il bot viene sviluppato su misura per il tuo server; i termini di licenza e manutenzione vengono definiti insieme a te in fase di consulenza.</p>
+        </div>
       </div>
 
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+      <div class="faq-item">
+        <button class="faq-item__q">Come posso ricevere supporto per un prodotto acquistato?<span class="sign">+</span></button>
+        <div class="faq-item__a">
+          <p>Puoi contattarci direttamente sul nostro server Discord oppure via email: il nostro team ti risponderà negli orari di supporto indicati in fondo al sito.</p>
+        </div>
       </div>
 
-      <div class="field">
-        <label for="servizio">Tipo di servizio</label>
-        <select id="servizio" name="servizio">
-          <option value="tastiera-custom">Tastiera Custom</option>
-          <option value="keycaps">Keycaps / Art</option>
-          <option value="bot">Sviluppo Bot</option>
-          <option value="consulenza">Consulenza</option>
-          <option value="grafica">Grafica / Identità visiva</option>
-          <option value="altro">Altro</option>
-        </select>
+      <div class="faq-item">
+        <button class="faq-item__q">Effettuate modding su tastiere pre-assemblate?<span class="sign">+</span></button>
+        <div class="faq-item__a">
+          <p>Sì, offriamo servizi di modding — lubrificazione, tuning stabilizzatori e isolamento acustico — anche su tastiere che non abbiamo costruito noi.</p>
+        </div>
       </div>
 
-      <div class="field">
-        <label for="progetto">Visione del progetto</label>
-        <textarea id="progetto" name="progetto" placeholder="Raccontaci la tua idea..." required></textarea>
+      <div class="faq-item">
+        <button class="faq-item__q">Posso richiedere un design grafico su misura per il mio server?<span class="sign">+</span></button>
+        <div class="faq-item__a">
+          <p>Certo, il nostro team grafico realizza identità visive, loghi e grafiche custom per server e community. Parlacene tramite il form contatti.</p>
+        </div>
       </div>
 
-      <button type="submit" class="btn btn--lime">Invia</button>
-      <p class="form-status"></p>
-    </form>
+    </div>
   </div>
 </section>
 

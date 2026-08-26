@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Gaming Relax</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand__logo">🎮</span>
+      Gaming Relax
+    </a>
+    <div class="header-actions">
+      <span id="auth-area"></span>
+    </div>
+  </div>
+</header>
+
+<div class="dashboard-guard" id="dashboard-guard">
+  <p>Verifica accesso in corso…</p>
+</div>
+
+<div id="dashboard-root">
+  <div class="container">
+
+    <div class="dash-header">
+      <div>
+        <h1>Dashboard</h1>
+        <span>Connesso come <strong id="admin-email"></strong></span>
+      </div>
+      <button type="button" id="logout-dash" class="btn btn--outline">Esci</button>
+    </div>
+
+    <div class="dash-tabs">
+      <button class="dash-tab active" data-panel="panel-products">Prodotti (Store)</button>
+      <button class="dash-tab" data-panel="panel-team">Team</button>
+      <button class="dash-tab" data-panel="panel-home">Contenuti Home</button>
+    </div>
+
+    <!-- ==================== PRODOTTI ==================== -->
+    <div class="dash-panel active" id="panel-products">
+      <div class="dash-layout">
+
+        <div class="dash-form-card">
+          <h3>Aggiungi / modifica prodotto</h3>
+          <form id="product-form">
+            <div class="field">
+              <label for="p-name">Nome prodotto</label>
+              <input type="text" id="p-name" required>
+            </div>
+            <div class="field">
+              <label for="p-category">Categoria</label>
+              <select id="p-category">
+                <option value="tastiere">Tastiere Custom</option>
+                <option value="keycaps">Keycaps</option>
+                <option value="accessori">Accessori</option>
+                <option value="servizi">Servizi Tech</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="p-price">Prezzo (es. 149,00 € oppure "Su preventivo")</label>
+              <input type="text" id="p-price" required>
+            </div>
+            <div class="field">
+              <label for="p-image">URL immagine</label>
+              <input type="url" id="p-image" placeholder="https://...">
+            </div>
+            <div class="field">
+              <label for="p-desc">Descrizione breve</label>
+              <textarea id="p-desc"></textarea>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <button type="submit" class="btn btn--lime">Aggiungi prodotto</button>
+              <button type="button" id="product-cancel-edit" class="btn btn--outline" style="display:none;">Annulla modifica</button>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom:20px;">Prodotti pubblicati</h3>
+          <div class="admin-list" id="admin-products-list">
+            <p class="empty-hint">Caricamento…</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TEAM ==================== -->
+    <div class="dash-panel" id="panel-team">
+      <div class="dash-layout">
+
+        <div class="dash-form-card">
+          <h3>Aggiungi / modifica membro del team</h3>
+          <form id="team-form">
+            <div class="field">
+              <label for="t-name">Nome</label>
+              <input type="text" id="t-name" required>
+            </div>
+            <div class="field">
+              <label for="t-role">Ruolo (es. Founder & Designer)</label>
+              <input type="text" id="t-role" required>
+            </div>
+            <div class="field">
+              <label for="t-category">Area / settore</label>
+              <select id="t-category">
+                <option value="tastiere">Tastiere Custom</option>
+                <option value="bot">Sviluppo Bot</option>
+                <option value="consulenze">Consulenze</option>
+                <option value="grafico">Team Grafico</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="t-photo">URL foto</label>
+              <input type="url" id="t-photo" placeholder="https://...">
+            </div>
+            <div style="display:flex;gap:12px;">
+              <button type="submit" class="btn btn--lime">Aggiungi membro</button>
+              <button type="button" id="team-cancel-edit" class="btn btn--outline" style="display:none;">Annulla modifica</button>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom:20px;">Team pubblicato</h3>
+          <div class="admin-list" id="admin-team-list">
+            <p class="empty-hint">Caricamento…</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== CONTENUTI HOME ==================== -->
+    <div class="dash-panel" id="panel-home">
+      <div class="dash-form-card" style="max-width:640px;">
+        <h3>Testi della Home (hero in cima alla pagina)</h3>
+        <form id="home-content-form">
+          <div class="field">
+            <label for="hc-title1">Titolo — prima riga</label>
+            <input type="text" id="hc-title1" placeholder="La tua tastiera.">
+          </div>
+          <div class="field">
+            <label for="hc-title2">Titolo — seconda riga</label>
+            <input type="text" id="hc-title2" placeholder="Il tuo pezzo">
+          </div>
+          <div class="field">
+            <label for="hc-accent">Titolo — parola evidenziata (verde)</label>
+            <input type="text" id="hc-accent" placeholder="unico.">
+          </div>
+          <div class="field">
+            <label for="hc-subtitle">Sottotitolo</label>
+            <textarea id="hc-subtitle" placeholder="Grafiche custom per tastiere e arte su misura..."></textarea>
+          </div>
+          <div class="field">
+            <label for="hc-cta">Testo del pulsante</label>
+            <input type="text" id="hc-cta" placeholder="Esplora il nostro mondo →">
+          </div>
+          <button type="submit" class="btn btn--lime">Salva contenuti</button>
+          <p class="dash-save-msg" id="home-content-status"></p>
+        </form>
+      </div>
+      <p style="font-size:13px;color:var(--text-dim);margin-top:20px;">Lascia un campo vuoto per mantenere il testo predefinito del sito.</p>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="js/firebase-init.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

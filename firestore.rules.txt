@@ -1,0 +1,49 @@
+// ==========================================================================
+// REGOLE DI SICUREZZA FIRESTORE — Gaming Relax
+// ==========================================================================
+// COSA FARE: vai su Console Firebase → Firestore Database → scheda "Regole",
+// cancella tutto il contenuto e incolla questo blocco al suo posto, poi
+// clicca "Pubblica".
+//
+// PERCHÉ SERVE: senza queste regole, chiunque potrebbe leggere o scrivere
+// nel database. Con queste regole:
+//   - Tutti (anche chi non ha fatto login) possono LEGGERE prodotti, team
+//     e contenuti del sito — necessario perché lo Store deve essere visibile
+//     a ogni visitatore.
+//   - Solo l'account con email "gamingrelaxadmin@gmail.com" può SCRIVERE
+//     (aggiungere, modificare, eliminare) prodotti, team e contenuti.
+//     Questa è la VERA protezione della Dashboard: anche se qualcuno legge
+//     il codice del sito su GitHub e vede l'email admin, non potrà comunque
+//     scrivere nulla senza conoscere anche la password E aver effettuato
+//     il login con quello specifico account.
+// ==========================================================================
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == 'gamingrelaxadmin@gmail.com';
+    }
+
+    match /team/{memberId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == 'gamingrelaxadmin@gmail.com';
+    }
+
+    match /siteContent/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == 'gamingrelaxadmin@gmail.com';
+    }
+
+    // Qualunque altra collezione: bloccata di default (nessuno legge o scrive).
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
