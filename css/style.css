@@ -26,12 +26,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background-color: var(--bg);
-  /* Sfondo preimpostato di base con immagine + gradiente scuro di lettura */
-  background-image: linear-gradient(rgba(10, 13, 22, 0.88), rgba(10, 13, 22, 0.94)), url('https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1920&q=80');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.55;
@@ -221,8 +216,7 @@ section { padding: 80px 0; }
   position: relative;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: linear-gradient(160deg, #171c29cc, #0d1019cc);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(160deg, #171c29, #0d1019);
   padding: 32px 28px;
   min-height: 230px;
   display: flex;
@@ -249,8 +243,8 @@ section { padding: 80px 0; }
 .studio-band {
   border-top: 1px solid var(--border);
   padding: 90px 0;
-  background: radial-gradient(ellipse at 30% 20%, #3a1a6644, transparent 60%),
-              radial-gradient(ellipse at 80% 80%, #1a2f6644, transparent 60%);
+  background: radial-gradient(ellipse at 30% 20%, #3a1a6633, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, #1a2f6633, transparent 60%);
 }
 .studio-band h2 { font-size: clamp(32px, 6vw, 56px); text-transform: uppercase; max-width: 700px; }
 .studio-band p { max-width: 560px; font-size: 17px; }
@@ -259,8 +253,7 @@ section { padding: 80px 0; }
 .cta-banner {
   border: 1px solid var(--border);
   border-radius: 24px;
-  background: #12151fcc;
-  backdrop-filter: blur(10px);
+  background: #12151f;
   padding: 70px 32px;
   text-align: center;
 }
@@ -281,8 +274,7 @@ section { padding: 80px 0; }
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
-  background: rgba(10, 13, 22, 0.6);
-  backdrop-filter: blur(6px);
+  background: transparent;
   color: var(--text);
   transition: all .2s ease;
 }
@@ -311,7 +303,7 @@ section { padding: 80px 0; }
 /* ---------------- Store ---------------- */
 .store-hero {
   padding: 70px 0 40px;
-  background: radial-gradient(ellipse at 50% 0%, #0e3d3233, transparent 70%);
+  background: radial-gradient(ellipse at 50% 0%, #0e3d3222, transparent 70%);
   border-bottom: 1px solid var(--border);
   text-align: center;
 }
