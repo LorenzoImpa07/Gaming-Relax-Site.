@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="contatti">
 
 <header class="site-header">
   <div class="container">
@@ -36,9 +36,9 @@
 
 <section class="contact-hero">
   <div class="container">
-    <span class="eyebrow eyebrow--lime">Progetti</span>
-    <h1>Iniziamo a<br>costruire</h1>
-    <p class="lede">Pronto a creare il tuo prossimo pezzo unico? Compila il form minimale e ti ricontatteremo.</p>
+    <span class="eyebrow eyebrow--lime" data-edit="eyebrow">Progetti</span>
+    <h1 data-edit="title">Iniziamo a<br>costruire</h1>
+    <p class="lede" data-edit="subtitle">Pronto a creare il tuo prossimo pezzo unico? Compila il form minimale e ti ricontatteremo.</p>
   </div>
 </section>
 
@@ -127,5 +127,6 @@
 <script src="js/script.js"></script>
 <script type="module" src="js/firebase-init.js"></script>
 <script type="module" src="js/auth.js"></script>
+<script type="module" src="js/content-dynamic.js"></script>
 </body>
 </html>

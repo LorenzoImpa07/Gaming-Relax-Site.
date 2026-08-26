@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="custom">
 
 <header class="site-header">
   <div class="container">
@@ -36,9 +36,9 @@
 
 <section class="process-hero">
   <div class="container">
-    <span class="eyebrow eyebrow--lime">Il processo</span>
-    <h1>Tu la immagini,<br>noi la costruiamo</h1>
-    <p class="lede" style="margin:18px auto 0;">Un percorso interattivo step-by-step per dare vita all'hardware perfetto per te.</p>
+    <span class="eyebrow eyebrow--lime" data-edit="eyebrow">Il processo</span>
+    <h1 data-edit="title">Tu la immagini,<br>noi la costruiamo</h1>
+    <p class="lede" style="margin:18px auto 0;" data-edit="subtitle">Un percorso interattivo step-by-step per dare vita all'hardware perfetto per te.</p>
   </div>
 </section>
 
@@ -121,5 +121,6 @@
 <script src="js/script.js"></script>
 <script type="module" src="js/firebase-init.js"></script>
 <script type="module" src="js/auth.js"></script>
+<script type="module" src="js/content-dynamic.js"></script>
 </body>
 </html>

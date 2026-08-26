@@ -30,7 +30,7 @@ gaming-relax/
     ├── dashboard.js                 Logica del pannello admin
     ├── store-dynamic.js             Collega lo Store ai prodotti su Firestore
     ├── team-dynamic.js              Collega la pagina Team a Firestore
-    └── home-dynamic.js              Applica i testi hero personalizzati
+    └── content-dynamic.js            Applica testi e colori personalizzati su ogni pagina
 ```
 
 ## Come funziona il sistema di accesso
@@ -40,6 +40,8 @@ gaming-relax/
   - **Prodotti**: aggiungere, modificare, eliminare prodotti. Compaiono in automatico nello Store, per tutti i visitatori.
   - **Team**: aggiungere, modificare, eliminare membri del team. Compaiono in automatico nella pagina Team.
   - **Contenuti Home**: modificare titolo, sottotitolo e testo del pulsante nella sezione hero della Home.
+  - **Testi delle pagine**: selezionare qualsiasi pagina (Home, Store, Custom, Art, Team, Contatti) da un menu a tendina e modificarne titoli e testi principali, senza toccare codice.
+  - **Aspetto grafico**: cambiare i colori usati in tutto il sito (accento principale, accento secondario, sfondo pagina, sfondo alternativo, sfondo delle card) — si applicano subito su ogni pagina.
 
 ⚠️ **Importante sulla sicurezza**: l'email admin è visibile nel codice (è scritta in `js/firebase-config.js` e `js/auth.js`) — questo è normale e non è un problema, perché **non basta conoscerla** per accedere alla Dashboard: serve anche la password corretta, verificata da Firebase Authentication, e le regole di Firestore (vedi sotto) impediscono comunque a chiunque altro di scrivere nel database anche se scoprisse l'email.
 
@@ -61,6 +63,15 @@ Il progetto Firebase `gaming-relax` è già collegato in `js/firebase-config.js`
 4. In "Source" seleziona il branch `main` e la cartella `/ (root)`.
 5. Salva: dopo qualche minuto il sito sarà online su `https://<tuo-utente>.github.io/gaming-relax/`.
 6. Non dimenticare il punto 3 sopra (autorizzare il dominio in Firebase), altrimenti login e registrazione daranno errore online.
+
+## Aspetto grafico e testi delle pagine
+
+Nella Dashboard, oltre a Prodotti e Team, ci sono due sezioni pensate per modificare il sito senza toccare il codice:
+
+- **Testi delle pagine**: scegli una pagina dal menu a tendina (Home, Store, Custom, Art, Team, Contatti) e modifica titolo, sottotitolo e altri testi principali di quella pagina. Ogni pagina ha i suoi campi specifici.
+- **Aspetto grafico**: cambia i colori globali del sito (colore principale, colore secondario, sfondo, sfondo alternativo, sfondo delle card) con dei selettori colore. Si applicano subito a tutte le pagine.
+
+**Cosa NON è (ancora) modificabile da qui**: i testi delle card di dettaglio (es. le singole voci della sezione "I nostri lavori / Custom / Opere / Team" in Home, i passaggi della pagina Custom, le domande della FAQ, i testi legali di Privacy/Termini). Il sistema è costruito per essere esteso: per rendere modificabile un nuovo testo, si aggiunge l'attributo `data-edit="nomecampo"` all'elemento HTML interessato, si registra il campo in `PAGE_FIELDS` dentro `js/dashboard.js`, e il gioco è fatto — lo stesso identico meccanismo si applica in automatico anche lì.
 
 ## Pagamenti (link Stripe per prodotto)
 

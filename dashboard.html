@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="dashboard">
 
 <header class="site-header">
   <div class="container">
@@ -41,7 +41,8 @@
     <div class="dash-tabs">
       <button class="dash-tab active" data-panel="panel-products">Prodotti (Store)</button>
       <button class="dash-tab" data-panel="panel-team">Team</button>
-      <button class="dash-tab" data-panel="panel-home">Contenuti Home</button>
+      <button class="dash-tab" data-panel="panel-pages">Testi delle pagine</button>
+      <button class="dash-tab" data-panel="panel-design">Aspetto grafico</button>
     </div>
 
     <!-- ==================== PRODOTTI ==================== -->
@@ -142,36 +143,61 @@
       </div>
     </div>
 
-    <!-- ==================== CONTENUTI HOME ==================== -->
-    <div class="dash-panel" id="panel-home">
+    <!-- ==================== TESTI DELLE PAGINE ==================== -->
+    <div class="dash-panel" id="panel-pages">
       <div class="dash-form-card" style="max-width:640px;">
-        <h3>Testi della Home (hero in cima alla pagina)</h3>
-        <form id="home-content-form">
-          <div class="field">
-            <label for="hc-title1">Titolo — prima riga</label>
-            <input type="text" id="hc-title1" placeholder="La tua tastiera.">
-          </div>
-          <div class="field">
-            <label for="hc-title2">Titolo — seconda riga</label>
-            <input type="text" id="hc-title2" placeholder="Il tuo pezzo">
-          </div>
-          <div class="field">
-            <label for="hc-accent">Titolo — parola evidenziata (verde)</label>
-            <input type="text" id="hc-accent" placeholder="unico.">
-          </div>
-          <div class="field">
-            <label for="hc-subtitle">Sottotitolo</label>
-            <textarea id="hc-subtitle" placeholder="Grafiche custom per tastiere e arte su misura..."></textarea>
-          </div>
-          <div class="field">
-            <label for="hc-cta">Testo del pulsante</label>
-            <input type="text" id="hc-cta" placeholder="Esplora il nostro mondo →">
-          </div>
-          <button type="submit" class="btn btn--lime">Salva contenuti</button>
-          <p class="dash-save-msg" id="home-content-status"></p>
+        <h3>Seleziona la pagina da modificare</h3>
+        <div class="field">
+          <label for="page-select">Pagina</label>
+          <select id="page-select">
+            <option value="home">Home</option>
+            <option value="store">Store</option>
+            <option value="custom">Custom</option>
+            <option value="art">Art</option>
+            <option value="team">Team</option>
+            <option value="contatti">Contatti</option>
+          </select>
+        </div>
+        <form id="page-content-form">
+          <div id="page-content-fields"></div>
+          <button type="submit" class="btn btn--lime">Salva testi di questa pagina</button>
+          <p class="dash-save-msg" id="page-content-status"></p>
         </form>
       </div>
-      <p style="font-size:13px;color:var(--text-dim);margin-top:20px;">Lascia un campo vuoto per mantenere il testo predefinito del sito.</p>
+      <p style="font-size:13px;color:var(--text-dim);margin-top:20px;">Lascia un campo vuoto per mantenere il testo predefinito del sito. Per andare a capo nel testo, premi Invio dentro il campo.</p>
+    </div>
+
+    <!-- ==================== ASPETTO GRAFICO ==================== -->
+    <div class="dash-panel" id="panel-design">
+      <div class="dash-form-card" style="max-width:520px;">
+        <h3>Colori generali del sito</h3>
+        <form id="design-form">
+          <div class="field">
+            <label for="d-lime">Colore principale (bottoni, accenti)</label>
+            <input type="color" id="d-lime" value="#c6ff1a">
+          </div>
+          <div class="field">
+            <label for="d-purple">Colore secondario (sezione Art, dettagli)</label>
+            <input type="color" id="d-purple" value="#9b3dff">
+          </div>
+          <div class="field">
+            <label for="d-bg">Sfondo pagina</label>
+            <input type="color" id="d-bg" value="#0a0d16">
+          </div>
+          <div class="field">
+            <label for="d-bg-alt">Sfondo alternativo (footer)</label>
+            <input type="color" id="d-bg-alt" value="#10141f">
+          </div>
+          <div class="field">
+            <label for="d-card">Sfondo delle card</label>
+            <input type="color" id="d-card" value="#14182a">
+          </div>
+          <button type="submit" class="btn btn--lime">Salva colori</button>
+          <button type="button" id="design-reset" class="btn btn--outline" style="margin-left:10px;">Ripristina colori predefiniti</button>
+          <p class="dash-save-msg" id="design-status"></p>
+        </form>
+      </div>
+      <p style="font-size:13px;color:var(--text-dim);margin-top:20px;">I colori si applicano a tutto il sito, su tutte le pagine, subito dopo il salvataggio.</p>
     </div>
 
   </div>

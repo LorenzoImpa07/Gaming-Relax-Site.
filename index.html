@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="home">
 
 <header class="site-header">
   <div class="container">
@@ -36,9 +36,9 @@
 
 <section class="hero">
   <div class="container">
-    <h1><span id="hero-title-1">La tua tastiera.</span><br><span id="hero-title-2">Il tuo pezzo</span><br><span class="accent" id="hero-title-accent">unico.</span></h1>
-    <p class="lede" id="hero-subtitle">Grafiche custom per tastiere e arte su misura.<br>Zero limiti, solo la tua visione.</p>
-    <a href="store.html" class="btn btn--ghost-lime" id="hero-cta">Esplora il nostro mondo →</a>
+    <h1><span id="hero-title-1" data-edit="heroTitleLine1">La tua tastiera.</span><br><span id="hero-title-2" data-edit="heroTitleLine2">Il tuo pezzo</span><br><span class="accent" id="hero-title-accent" data-edit="heroAccent">unico.</span></h1>
+    <p class="lede" id="hero-subtitle" data-edit="heroSubtitle">Grafiche custom per tastiere e arte su misura.<br>Zero limiti, solo la tua visione.</p>
+    <a href="store.html" class="btn btn--ghost-lime" id="hero-cta" data-edit="heroCta">Esplora il nostro mondo →</a>
   </div>
 </section>
 
@@ -80,8 +80,8 @@
 
 <section class="studio-band">
   <div class="container">
-    <h2>Un team.<br>Uno studio.</h2>
-    <p>Uniamo design di altissima precisione, ingegneria dei materiali e direzione artistica visionaria per creare setup che trascendono la semplice funzionalità.</p>
+    <h2 data-edit="studioTitle">Un team.<br>Uno studio.</h2>
+    <p data-edit="studioText">Uniamo design di altissima precisione, ingegneria dei materiali e direzione artistica visionaria per creare setup che trascendono la semplice funzionalità.</p>
     <a href="team.html" class="btn btn--outline">Conosci il team →</a>
   </div>
 </section>
@@ -89,7 +89,7 @@
 <section>
   <div class="container">
     <div class="cta-banner">
-      <h2>Hai un'idea?<br>Trasformiamola in qualcosa di unico.</h2>
+      <h2 data-edit="ctaTitle">Hai un'idea?<br>Trasformiamola in qualcosa di unico.</h2>
       <a href="contatti.html" class="btn btn--lime">Inizia un progetto →</a>
     </div>
   </div>
@@ -138,6 +138,6 @@
 <script src="js/script.js"></script>
 <script type="module" src="js/firebase-init.js"></script>
 <script type="module" src="js/auth.js"></script>
-<script type="module" src="js/home-dynamic.js"></script>
+<script type="module" src="js/content-dynamic.js"></script>
 </body>
 </html>

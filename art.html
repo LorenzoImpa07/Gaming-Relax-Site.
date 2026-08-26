@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="art">
 
 <header class="site-header">
   <div class="container">
@@ -36,8 +36,8 @@
 
 <section class="art-hero">
   <div class="container">
-    <h1>L'arte non ha limiti</h1>
-    <p class="lede" style="margin:18px auto 0;">Artisan keycaps, lavorazioni in resina e dettagli cyber che trasformano la periferica in un'opera d'arte.</p>
+    <h1 data-edit="title">L'arte non ha limiti</h1>
+    <p class="lede" style="margin:18px auto 0;" data-edit="subtitle">Artisan keycaps, lavorazioni in resina e dettagli cyber che trasformano la periferica in un'opera d'arte.</p>
   </div>
 </section>
 
@@ -100,5 +100,6 @@
 <script src="js/script.js"></script>
 <script type="module" src="js/firebase-init.js"></script>
 <script type="module" src="js/auth.js"></script>
+<script type="module" src="js/content-dynamic.js"></script>
 </body>
 </html>
