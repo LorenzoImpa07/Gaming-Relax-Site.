@@ -7,22 +7,58 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Regole di supporto specifiche per il carrello interattivo coerenti con style.css */
+        .checkout-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; align-items: start; }
+        @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } }
+        
+        .cart-item-row { display: flex; align-items: center; justify-content: space-between; background: var(--bg); padding: 16px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 15px; }
+        .cart-item-info { display: flex; align-items: center; gap: 15px; }
+        .cart-item-thumb { width: 50px; height: 50px; border-radius: 8px; background: var(--card-solid); object-fit: cover; border: 1px solid var(--border); }
+        
+        .qty-box { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--card-solid); }
+        .qty-box button { background: transparent; border: none; color: var(--text); padding: 6px 12px; cursor: pointer; font-weight: bold; }
+        .qty-box button:hover { background: var(--lime-dim); color: var(--lime); }
+        .qty-box input { width: 35px; text-align: center; border: none; background: transparent; color: var(--text); font-weight: 600; }
+
+        .cost-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-dim); font-size: 15px; }
+        .cost-row.total { font-size: 20px; font-weight: 700; color: var(--text); border-top: 1px solid var(--border); padding-top: 15px; margin-top: 15px; }
+        
+        .payments-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+        .payment-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--card-solid); color: var(--text); font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+        .payment-btn:hover { border-color: var(--lime); color: var(--lime); background: var(--lime-dim); }
+        
+        .coupon-wrapper { display: flex; gap: 10px; }
+        .coupon-input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; color: var(--text); font-family: var(--font-body); }
+        .coupon-input:focus { border-color: var(--lime); outline: none; }
+        .coupon-btn { background: var(--card-solid); border: 1px solid var(--border); color: var(--text); padding: 0 20px; border-radius: var(--radius); font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+        .coupon-btn:hover { border-color: var(--lime); color: var(--lime); }
+        
+        .shipping-info { background: var(--card-solid); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; font-size: 14px; color: var(--text-dim); margin-bottom: 25px; line-height: 1.6; }
+    </style>
 </head>
 <body>
 
+    <!-- Header ufficiale ripreso da style.css -->
     <header class="site-header">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
-            <span class="logo-text">Gaming Relax</span>
-        </div>
-        <div class="nav-icons">
-            <a href="https://discord.com" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
-            <a href="carrello.html" class="icon-link cart-icon"><i class="fa-solid fa-cart-shopping"></i></a>
-            <button class="menu-btn" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        <div class="container">
+            <div class="brand">
+                <div class="brand__logo"><i class="fa-solid fa-gamepad" style="color: var(--lime);"></i></div>
+                <span>Gaming Relax</span>
+            </div>
+            <div class="header-actions">
+                <a href="https://discord.com" target="_blank" class="icon-btn"><i class="fa-brands fa-discord"></i></a>
+                <a href="carrello.html" class="icon-btn" style="border-color: var(--lime); color: var(--lime);"><i class="fa-solid fa-cart-shopping"></i></a>
+                <button class="nav-toggle" id="menuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <nav class="dropdown-menu" id="dropdownMenu">
+    <nav class="main-nav" id="dropdownMenu">
         <a href="index.html">Home</a>
         <a href="work.html">Work</a>
         <a href="custom.html">Custom</a>
@@ -31,58 +67,202 @@
         <a href="contatti.html">Contatti</a>
     </nav>
 
-    <main class="main-content">
-        <div class="checkout-container">
-            <h1 class="page-title" style="margin-bottom: 10px; text-align: left;">Carrello & Checkout</h1>
+    <main class="container" style="padding-top: 50px; padding-bottom: 70px;">
+        <h1 style="font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin-bottom: 30px;">Carrello & Checkout</h1>
 
-            <!-- Box Coupon -->
-            <div class="content-box" style="max-width: 100%; padding: 20px;">
-                <div class="coupon-box">
-                    <input type="text" class="coupon-input" placeholder="Codice coupon">
-                    <button class="coupon-btn">Applica</button>
+        <div class="checkout-grid">
+            
+            <!-- COLONNA SINISTRA: ARTICOLI & COUPON -->
+            <div>
+                <div class="content-box" style="background: var(--card-solid); border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-bottom: 25px;">
+                    <h3 style="font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">I tuoi prodotti</h3>
+                    
+                    <!-- Singolo Articolo Gestibile -->
+                    <div class="cart-item-row">
+                        <div class="cart-item-info">
+                            <img src="logo.png" alt="Tastiera Custom" class="cart-item-thumb" onerror="this.src=''">
+                            <div>
+                                <strong style="font-size: 16px; display: block; margin-bottom: 4px;">Tastiera Custom Gaming Relax</strong>
+                                <span style="font-size: 13px; color: var(--lime);">Disponibile</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <div class="qty-box">
+                                <button onclick="changeQuantity(-1)">-</button>
+                                <input type="text" id="itemQty" value="1" readonly>
+                                <button onclick="changeQuantity(1)">+</button>
+                            </div>
+                            <span id="itemPriceDisplay" style="font-family: var(--font-display); font-weight: 700; font-size: 16px; min-width: 70px; text-align: right;">15,00 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box Coupon -->
+                <div class="content-box" style="background: var(--card-solid); border: 1px solid var(--border); border-radius: var(--radius); padding: 25px; margin-bottom: 25px;">
+                    <h3 style="font-size: 18px; margin-bottom: 15px;">Hai un codice coupon?</h3>
+                    <div class="coupon-wrapper">
+                        <input type="text" class="coupon-input" id="couponInput" placeholder="Inserisci codice (es. RELAX10)">
+                        <button class="coupon-btn" onclick="applyCoupon()">Applica</button>
+                    </div>
+                    <small id="couponMessage" style="display: block; margin-top: 8px; color: var(--lime); font-size: 13px;"></small>
+                </div>
+
+                <!-- Area Informativa Spedizioni -->
+                <div class="shipping-info">
+                    <i class="fa-solid fa-truck-fast" style="color: var(--lime); margin-right: 8px;"></i> 
+                    Gli ordini hardware vengono preparati con cura e imballati in modo sicuro con tracciamento della spedizione. Per servizi software e bot, sarai contattato dal nostro team tech.
                 </div>
             </div>
 
-            <!-- Area Informativa Spedizioni -->
-            <div class="shipping-info">
-                «Gli ordini hardware vengono preparati con cura e imballati in modo sicuro con tracciamento della spedizione. Per servizi software e bot, sarai contattato dal nostro team tech.»
-            </div>
-
-            <!-- Riepilogo Costi -->
-            <div class="content-box" style="max-width: 100%; padding: 20px;">
-                <div class="cost-summary">
+            <!-- COLONNA DESTRA: RIEPILOGO E PAGAMENTI -->
+            <div>
+                <div class="content-box" style="background: var(--card-solid); border: 1px solid var(--border); border-radius: var(--radius); padding: 25px;">
+                    <h3 style="font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Riepilogo Costi</h3>
+                    
                     <div class="cost-row">
                         <span>Subtotale stimato:</span>
-                        <span>0.00 €</span>
+                        <span id="summarySubtotal">15,00 €</span>
                     </div>
+                    <div class="cost-row" id="discountRow" style="display: none; color: var(--lime);">
+                        <span>Sconto applicato:</span>
+                        <span id="summaryDiscount">-0,00 €</span>
+                    </div>
+                    <div class="cost-row" style="font-size: 13px;">
+                        <span>Imponibile (IVA esclusa):</span>
+                        <span id="summaryIvaExc">12,30 €</span>
+                    </div>
+                    <div class="cost-row" style="font-size: 13px;">
+                        <span>IVA (22%):</span>
+                        <span id="summaryIvaTax">2,70 €</span>
+                    </div>
+                    
                     <div class="cost-row total">
                         <span>Totale:</span>
-                        <span>0.00 €</span>
+                        <span id="summaryTotal" style="color: var(--lime);">15,00 €</span>
                     </div>
+                    <p style="font-size: 12px; color: var(--text-dim); margin-top: 10px;">Tasse e spedizione calcolate in base ai parametri correnti.</p>
+
+                    <!-- Metodi di Pagamento Esterni -->
+                    <h4 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; margin: 25px 0 12px;">Scegli il pagamento:</h4>
+                    <div class="payments-grid">
+                        <a href="https://revolut.me" target="_blank" class="payment-btn"><i class="fa-solid fa-r" style="color: var(--lime);"></i> Revolut</a>
+                        <a href="https://paypal.com" target="_blank" class="payment-btn"><i class="fa-brands fa-paypal" style="color: #003087;"></i> PayPal</a>
+                        <a href="#" class="payment-btn"><i class="fa-solid fa-credit-card"></i> Mastercard</a>
+                        <a href="#" class="payment-btn"><i class="fa-solid fa-building-columns"></i> Unicredit</a>
+                    </div>
+
+                    <!-- Pulsante Checkout & Flusso Discord -->
+                    <a href="https://discord.com" target="_blank" class="btn btn--lime" style="width: 100%; justify-content: center; margin-top: 25px; text-align: center;">
+                        <i class="fa-brands fa-discord"></i> Procedi al Checkout (Verifica su Discord)
+                    </a>
                 </div>
-                <p class="tax-note" style="margin-top: 15px;">Tasse e spedizione sono calcolate durante il checkout sicuro ove applicabili.</p>
             </div>
 
-            <!-- Metodi di Pagamento Esterni -->
-            <h3 style="font-size: 1.1rem; margin-top: 10px; color: #fff;">Scegli il metodo di pagamento:</h3>
-            <div class="payments-grid">
-                <a href="https://revolut.me" target="_blank" class="payment-btn"><i class="fa-solid fa-r"></i> Revolut</a>
-                <a href="https://paypal.com" target="_blank" class="payment-btn"><i class="fa-brands fa-paypal"></i> PayPal</a>
-                <a href="#" class="payment-btn"><i class="fa-solid fa-credit-card"></i> Mastercard / Carte</a>
-                <a href="#" class="payment-btn"><i class="fa-solid fa-building-columns"></i> Unicredit (Bonifico)</a>
-            </div>
-
-            <!-- Pulsante Checkout & Flusso Discord -->
-            <a href="https://discord.com" target="_blank" class="btn-buy" style="display: block; text-align: center; padding: 15px; font-size: 1.1rem; margin-top: 10px;">
-                Procedi al Checkout (Verifica su Discord)
-            </a>
         </div>
     </main>
 
+    <!-- Footer ufficiale ripreso da style.css -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="brand__logo"><i class="fa-solid fa-gamepad" style="color: var(--lime);"></i></div>
+                        <span>Gaming Relax</span>
+                    </div>
+                    <p>Custom Keyboards & Digital Craftsmanship.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigazione</h4>
+                    <a href="index.html">Home</a>
+                    <a href="work.html">Work</a>
+                    <a href="custom.html">Custom</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Termini di Servizio</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <a href="https://discord.com" target="_blank" class="social-link"><i class="fa-brands fa-discord"></i> Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <small>© 2026 Gaming Relax. Tutti i diritti riservati.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script per Menu Mobile e Calcoli Dinamici -->
     <script>
+        // Gestione Menu Mobile integrata con style.css
         const menuToggle = document.getElementById('menuToggle');
         const dropdownMenu = document.getElementById('dropdownMenu');
-        menuToggle.addEventListener('click', () => dropdownMenu.classList.toggle('active'));
+        menuToggle.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('open');
+        });
+
+        // Logica carrello, quantità e calcolo IVA al 22% scorporata
+        let baseUnitPrice = 15.00;
+        let quantity = 1;
+        let discountMultiplier = 1.0; // Nessun sconto iniziale
+
+        function updateCart() {
+            let subtotal = baseUnitPrice * quantity;
+            let discountedSubtotal = subtotal * discountMultiplier;
+            
+            // Calcolo IVA scorporata al 22% sull'importo scontato
+            let ivaExc = discountedSubtotal / 1.22;
+            let ivaTax = discountedSubtotal - ivaExc;
+
+            // Formattazione in valuta italiana
+            const formatEUR = (val) => val.toFixed(2).replace('.', ',') + ' €';
+
+            document.getElementById('itemQty').value = quantity;
+            document.getElementById('itemPriceDisplay').innerText = formatEUR(subtotal);
+            document.getElementById('summarySubtotal').innerText = formatEUR(subtotal);
+            
+            if(discountMultiplier < 1.0) {
+                document.getElementById('discountRow').style.display = 'flex';
+                let diff = subtotal - discountedSubtotal;
+                document.getElementById('summaryDiscount').innerText = '-' + formatEUR(diff);
+            } else {
+                document.getElementById('discountRow').style.display = 'none';
+            }
+
+            document.getElementById('summaryIvaExc').innerText = formatEUR(ivaExc);
+            document.getElementById('summaryIvaTax').innerText = formatEUR(ivaTax);
+            document.getElementById('summaryTotal').innerText = formatEUR(discountedSubtotal);
+        }
+
+        function changeQuantity(change) {
+            quantity += change;
+            if (quantity < 1) quantity = 1;
+            updateCart();
+        }
+
+        function applyCoupon() {
+            const code = document.getElementById('couponInput').value.trim().toUpperCase();
+            const msg = document.getElementById('couponMessage');
+            
+            if (code === 'RELAX10') {
+                discountMultiplier = 0.90; // Sconto del 10%
+                msg.style.color = 'var(--lime)';
+                msg.innerText = 'Coupon applicato con successo (-10%)!';
+            } else if (code === '') {
+                msg.style.color = '#ff8080';
+                msg.innerText = 'Inserisci un codice valido.';
+            } else {
+                discountMultiplier = 1.0;
+                msg.style.color = '#ff8080';
+                msg.innerText = 'Codice coupon non valido o scaduto.';
+            }
+            updateCart();
+        }
+
+        // Inizializzazione calcoli all'avvio
+        updateCart();
     </script>
 </body>
 </html>
