@@ -28,33 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Filtri Store (categorie) ---
-  const storeFilters = document.querySelectorAll('[data-store-filter]');
-  const products = document.querySelectorAll('[data-product-category]');
-  storeFilters.forEach((pill) => {
-    pill.addEventListener('click', () => {
-      storeFilters.forEach((p) => p.classList.remove('active'));
-      pill.classList.add('active');
-      const filter = pill.dataset.storeFilter;
-      products.forEach((card) => {
-        card.style.display = (filter === 'tutti' || card.dataset.productCategory === filter) ? '' : 'none';
-      });
-    });
-  });
-
-  // --- Filtri Team (settore) ---
-  const teamFilters = document.querySelectorAll('[data-team-filter]');
-  const teamMembers = document.querySelectorAll('[data-team-category]');
-  teamFilters.forEach((pill) => {
-    pill.addEventListener('click', () => {
-      teamFilters.forEach((p) => p.classList.remove('active'));
-      pill.classList.add('active');
-      const filter = pill.dataset.teamFilter;
-      teamMembers.forEach((card) => {
-        card.style.display = (card.dataset.teamCategory === filter) ? '' : 'none';
-      });
-    });
-  });
+  // --- Filtri Store e Team: gestiti dinamicamente da store-dynamic.js e team-dynamic.js ---
 
   // --- Wishlist toggle (solo UI) ---
   document.querySelectorAll('.wish-btn').forEach((btn) => {
