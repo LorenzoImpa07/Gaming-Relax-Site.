@@ -102,6 +102,7 @@ function initProducts() {
         form.querySelector("#p-name").value = p.name || "";
         form.querySelector("#p-category").value = p.category || "tastiere";
         form.querySelector("#p-price").value = p.price || "";
+        form.querySelector("#p-payment-link").value = p.paymentLink || "";
         form.querySelector("#p-desc").value = p.description || "";
         form.querySelector("#p-image").value = p.imageUrl || "";
         form.dataset.editId = btn.dataset.id;
@@ -118,6 +119,7 @@ function initProducts() {
       name: form.querySelector("#p-name").value.trim(),
       category: form.querySelector("#p-category").value,
       price: form.querySelector("#p-price").value.trim(),
+      paymentLink: form.querySelector("#p-payment-link").value.trim(),
       description: form.querySelector("#p-desc").value.trim(),
       imageUrl: form.querySelector("#p-image").value.trim()
     };
