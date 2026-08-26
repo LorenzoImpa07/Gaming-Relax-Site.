@@ -6,6 +6,7 @@ import { collection, onSnapshot, query, orderBy } from "https://www.gstatic.com/
 
 const CATEGORY_LABELS = {
   tastiere: "Tastiere Custom",
+  tastiere_preassemblate: "Tastiere Preassemblate",
   keycaps: "Keycaps",
   accessori: "Accessori",
   servizi: "Servizi Tech"
