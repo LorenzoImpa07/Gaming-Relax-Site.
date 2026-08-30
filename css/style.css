@@ -1,13 +1,13 @@
 /* =================================================================
-   GAMING RELAX - SITE123 REPLICA STYLE
+   GAMING RELAX - CORRETTO E ALLINEATO (STILE SITE123)
    ================================================================== */
 
 :root {
-    --accent-color: #3b82f6;
-    --dark-bg: #111827;
-    --light-bg: #f9fafb;
+    --accent-color: #2563eb;
     --text-main: #1f2937;
     --text-muted: #4b5563;
+    --bg-light: #ffffff;
+    --bg-alt: #f3f4f6;
     --border-color: #e5e7eb;
 }
 
@@ -20,40 +20,56 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--text-main);
-    background-color: #ffffff;
+    background-color: var(--bg-light);
     line-height: 1.6;
 }
 
-/* --- HEADER & NAVBAR --- */
-header, .navbar {
+/* --- HEADER & NAVBAR PULITA --- */
+header, .navbar, nav {
     background-color: #ffffff;
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
 }
 
-.nav-container, .container-header {
-    max-width: 1140px;
+/* Contenitore generale dell'header per allineare logo e menu sulla stessa riga */
+header > div, .nav-container, .container-header, .navbar {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.logo img, .brand-logo {
-    max-height: 40px;
+/* Gestione Logo */
+.logo, .brand-logo, img[alt*="logo" i], header img {
+    max-height: 45px;
+    width: auto;
+    object-fit: contain;
 }
 
-.nav-links, .menu-links {
+/* Pulsanti rapidi header (Accedi / Carrello) */
+header .btn, header button, .header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Menu di navigazione principale */
+.nav-links, .menu-links, ul.nav, nav ul {
     display: flex;
     gap: 25px;
     list-style: none;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-links a, .menu-links a {
+.nav-links a, .menu-links a, nav a {
     text-decoration: none;
     color: var(--text-main);
     font-weight: 600;
@@ -63,37 +79,38 @@ header, .navbar {
     transition: color 0.2s ease;
 }
 
-.nav-links a:hover, .menu-links a:hover, .nav-links a.active {
+.nav-links a:hover, .menu-links a:hover, nav a:hover, .nav-links a.active {
     color: var(--accent-color);
 }
 
-/* --- HERO SECTION --- */
-.hero, .hero-section {
-    background-color: #f3f4f6;
-    padding: 120px 20px;
+/* --- HERO SECTION CENTRATA E PULITA --- */
+.hero, .hero-section, section:first-of-type {
+    background-color: var(--bg-alt);
+    padding: 100px 20px;
     text-align: center;
 }
 
-.hero h1, .hero-title {
-    font-size: 48px;
+.hero h1, .hero-title, h1 {
+    font-size: 44px;
     font-weight: 700;
     color: var(--text-main);
     margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .hero p, .hero-subtitle {
     font-size: 18px;
     color: var(--text-muted);
-    max-width: 700px;
+    max-width: 650px;
     margin: 0 auto 30px auto;
 }
 
-/* --- BUTTONS --- */
+/* --- BUTTONS GENERALI --- */
 .btn, button, .cta-button {
     background-color: var(--accent-color);
     color: #ffffff;
     border: none;
-    padding: 12px 30px;
+    padding: 12px 28px;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
@@ -101,38 +118,38 @@ header, .navbar {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    transition: opacity 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .btn:hover, button:hover, .cta-button:hover {
-    opacity: 0.9;
+    background-color: #1d4ed8;
 }
 
-/* --- SECTIONS --- */
+/* --- SEZIONI E CONTENITORI --- */
 section {
-    padding: 90px 20px;
-    max-width: 1140px;
+    padding: 80px 20px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.section-title, h2.title {
+.section-title, h2 {
     text-align: center;
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .section-subtitle {
     text-align: center;
     color: var(--text-muted);
     font-size: 16px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
-/* --- CARDS & GRID --- */
+/* --- GRIGLIE E CARD --- */
 .grid, .cards-container, .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -140,11 +157,11 @@ section {
     background-color: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 30px;
-    text-align: left;
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-/* --- FORMS & INPUTS --- */
+/* --- FORM E INPUT --- */
 input, select, textarea {
     width: 100%;
     padding: 12px;
@@ -167,7 +184,7 @@ label {
     font-size: 14px;
 }
 
-/* --- TABLES --- */
+/* --- TABELLE (DASHBOARD) --- */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -184,13 +201,13 @@ th, td {
 }
 
 th {
-    background-color: var(--light-bg);
+    background-color: var(--bg-alt);
     font-weight: bold;
 }
 
 /* --- FOOTER --- */
 footer {
-    background-color: var(--dark-bg);
+    background-color: #111827;
     color: #ffffff;
     padding: 50px 20px;
     text-align: center;
